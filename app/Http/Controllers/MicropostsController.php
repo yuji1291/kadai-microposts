@@ -48,14 +48,12 @@ class MicropostsController extends Controller
     {
         $micropost = Micropost::find($id);
         $favorites = $micropost->favorite_users()->paginate(10);
-
         $data = [
             'micropost' => $micropost,
             'microposts' => $favorites,
         ];
-
         $data += $this->counts($micropost);
-
         return view('users.favorites', $data);
     }
+   
 }
